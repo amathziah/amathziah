@@ -1,5 +1,7 @@
 ## Hi, I'm Amathziah
 
+![How I build: deterministic where it can be, model where it must be, a human before it ships](./assets/pipeline.svg)
+
 Backend and AI engineer in Delhi. I build systems where the AI part is measured, not assumed, and the infrastructure is reproducible.
 
 Most of my recent work comes back to one idea: **use a model only where judgement is genuinely needed, and prove the rest with code you can audit.** Deterministic rules are instant, free and reproducible — qualification logic, scoring maths and state machines belong there. Models earn their cost on synthesis and language.
