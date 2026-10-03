@@ -8,6 +8,12 @@ Most of my recent work comes back to one idea: **use a model only where judgemen
 
 ### Selected work
 
+**CapitaEdgeX** — my startup · `React` `Node.js` `Supabase` `Gemini` `Docker`
+
+Invoicing and business-assistant platform for small businesses. REST API over invoices, customers, products and expenses; multi-lingual invoice PDF generation; an AI assistant for querying business data; automated email reminders; Supabase for storage and auth. Containerised, with AWS and Render deployment configs.
+
+<sub>Source is private — happy to walk through the architecture.</sub>
+
 **[LeadFlow](https://github.com/amathziah/leadflow)** · `TypeScript` `Node` `PostgreSQL` `Gemini`
 
 B2B lead intelligence platform. Imports companies, enriches them, detects buying signals, scores them against an ICP, researches each account, and drafts evidence-grounded outreach that a human approves before anything sends.
@@ -30,6 +36,6 @@ Qiskit reproduction of the single-qubit quantum neural network (data re-uploadin
 
 Crop yield prediction using support vector regression.
 
-### Tools
+### Stack
 
-`TypeScript` · `Node.js` · `Express` · `React` · `PostgreSQL` · `Prisma` · `Python` · `Terraform` · `AWS` · `Docker` · `Playwright` · `GitHub Actions`
+![Tech stack: TypeScript, React, Node.js, PostgreSQL, Python, Docker, Terraform, AWS ECS, GitHub Actions](./assets/stack.svg)
