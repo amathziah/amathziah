@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 150" width="900" height="150" role="img" aria-label="Pipeline: import, qualify deterministically, research with a model, human review gate, send">
+  <title>How I build: deterministic where it can be, model where it must be, human before it ships</title>
+
+  <!-- Colours chosen to read on both GitHub light and dark themes:
+       no pure white or black, mid-tone grey for text. -->
+  <defs>
+    <linearGradient id="track" gradientUnits="userSpaceOnUse" x1="40" y1="0" x2="840" y2="0">
+      <stop offset="0%"   stop-color="#10b981"/>
+      <stop offset="45%"  stop-color="#8b5cf6"/>
+      <stop offset="75%"  stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    .lbl  { font: 600 12px ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #7d8590; }
+    .kind { font: 500 9.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #6e7681; letter-spacing: .06em; }
+    .head { font: 600 13px ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #8b5cf6; }
+  </style>
+
+  <text class="head" x="0" y="16">Deterministic where it can be · model where it must be · a human before it ships</text>
+
+  <!-- Track: drawn once on load -->
+  <path d="M 40 78 H 840" stroke="url(#track)" stroke-width="2" fill="none" opacity=".35"
+        stroke-dasharray="800" stroke-dashoffset="800">
+    <animate attributeName="stroke-dashoffset" from="800" to="0" dur="1.6s" fill="freeze"/>
+  </path>
+
+  <!-- Packet travelling the pipeline, pausing at the review gate -->
+  <circle r="4.5" fill="#8b5cf6">
+    <animate attributeName="cx"
+             values="40;240;440;640;640;840"
+             keyTimes="0;0.22;0.44;0.66;0.80;1"
+             dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="78" dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+    <animate attributeName="fill"
+             values="#10b981;#10b981;#8b5cf6;#f59e0b;#f59e0b;#10b981"
+             keyTimes="0;0.22;0.44;0.66;0.80;1"
+             dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;1;1" keyTimes="0;0.04;0.96;1" dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Stage 1: Import -->
+  <g>
+    <circle cx="40" cy="78" r="9" fill="none" stroke="#10b981" stroke-width="2" opacity=".8"/>
+    <circle cx="40" cy="78" r="9" fill="none" stroke="#10b981" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="9;17" dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".7;0" dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+    </circle>
+    <text class="lbl"  x="40" y="106" text-anchor="middle">Import</text>
+    <text class="kind" x="40" y="121" text-anchor="middle">CSV</text>
+  </g>
+
+  <!-- Stage 2: Qualify (deterministic) -->
+  <g>
+    <rect x="229" y="67" width="22" height="22" rx="4" fill="none" stroke="#10b981" stroke-width="2" opacity=".8"/>
+    <rect x="229" y="67" width="22" height="22" rx="4" fill="#10b981" opacity="0">
+      <animate attributeName="opacity" values="0;.30;0" keyTimes="0;0.24;0.34" dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+    </rect>
+    <text class="lbl"  x="240" y="106" text-anchor="middle">Qualify + score</text>
+    <text class="kind" x="240" y="121" text-anchor="middle">0.24ms p99 · no LLM</text>
+  </g>
+
+  <!-- Stage 3: Research (model) -->
+  <g>
+    <circle cx="440" cy="78" r="10" fill="none" stroke="#8b5cf6" stroke-width="2" opacity=".8"/>
+    <circle cx="440" cy="78" r="3" fill="#8b5cf6">
+      <animate attributeName="opacity" values=".35;1;.35" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    <text class="lbl"  x="440" y="106" text-anchor="middle">Research + draft</text>
+    <text class="kind" x="440" y="121" text-anchor="middle">GROUNDED IN SIGNALS</text>
+  </g>
+
+  <!-- Stage 4: Human gate — the packet stops here -->
+  <g>
+    <path d="M 640 66 L 651 72 V 84 L 640 90 L 629 84 V 72 Z" fill="none" stroke="#f59e0b" stroke-width="2" opacity=".85"/>
+    <path d="M 640 66 L 651 72 V 84 L 640 90 L 629 84 V 72 Z" fill="#f59e0b" opacity="0">
+      <animate attributeName="opacity" values="0;.35;.35;0" keyTimes="0;0.66;0.80;0.86" dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+    </path>
+    <text class="lbl"  x="640" y="106" text-anchor="middle">Human approves</text>
+    <text class="kind" x="640" y="121" text-anchor="middle">HARD GATE</text>
+  </g>
+
+  <!-- Stage 5: Send -->
+  <g>
+    <circle cx="840" cy="78" r="9" fill="none" stroke="#10b981" stroke-width="2" opacity=".8"/>
+    <circle cx="840" cy="78" r="9" fill="#10b981" opacity="0">
+      <animate attributeName="opacity" values="0;.45;0" keyTimes="0;0.98;1" dur="5.5s" begin="1.4s" repeatCount="indefinite"/>
+    </circle>
+    <text class="lbl"  x="840" y="106" text-anchor="middle">Send</text>
+    <text class="kind" x="840" y="121" text-anchor="middle">ON ACCEPT ONLY</text>
+  </g>
+</svg>
