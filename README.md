@@ -1,41 +1,55 @@
-## Hi, I'm Amathziah
+## Amathziah J
 
-![How I build: deterministic where it can be, model where it must be, a human before it ships](./assets/pipeline.svg)
+Backend and AI engineer in Delhi. I work on the part most AI products skip: proving the thing actually does what the README claims.
 
-Backend and AI engineer in Delhi. I build systems where the AI part is measured, not assumed, and the infrastructure is reproducible.
+My default is to **use a model only where judgement is genuinely needed, and prove the rest with code that can be audited.** Qualification rules, scoring maths and state machines are deterministic — instant, free, reproducible, and explainable to whoever has to justify the decision. Models earn their cost on synthesis and language, and everything they produce carries provenance.
 
-Most of my recent work comes back to one idea: **use a model only where judgement is genuinely needed, and prove the rest with code you can audit.** Deterministic rules are instant, free and reproducible — qualification logic, scoring maths and state machines belong there. Models earn their cost on synthesis and language.
+![Tech stack](./assets/stack.svg)
 
-### Selected work
+---
 
-**CapitaEdgeX** — my startup · `React` `Node.js` `Supabase` `Gemini` `Docker`
+### CapitaEdgeX — my startup
 
-Invoicing and business-assistant platform for small businesses. REST API over invoices, customers, products and expenses; multi-lingual invoice PDF generation; an AI assistant for querying business data; automated email reminders; Supabase for storage and auth. Containerised, with AWS and Render deployment configs.
+Invoicing and business-assistant platform for small businesses. REST API over invoices, customers, products and expenses; multi-lingual invoice PDF generation; an AI assistant for querying business data; automated reminders; Supabase for storage and auth. Containerised, with AWS and Render deployment configs.
 
-<sub>Source is private — happy to walk through the architecture.</sub>
+`React` · `Node.js` · `Supabase` · `Gemini` · `Docker`
 
-**[LeadFlow](https://github.com/amathziah/leadflow)** · `TypeScript` `Node` `PostgreSQL` `Gemini`
+<sub>Private source — happy to walk through the architecture.</sub>
 
-B2B lead intelligence platform. Imports companies, enriches them, detects buying signals, scores them against an ICP, researches each account, and drafts evidence-grounded outreach that a human approves before anything sends.
+---
 
-Three things in it I'd defend in a code review:
+### [LeadFlow](https://github.com/amathziah/leadflow) — measured AI, not assumed
 
-- **A two-tier eval harness** that runs keyless in CI. On its first run it failed 4 of 18 cases and took qualification precision from **0.64 → 1.00** — substring matching was accepting "Agriculture Software" for a Software ICP, and "Executive Assistant to the CEO" as a CEO.
-- **Provenance on every generation.** I found a silent total AI outage: a retired model ID made every call return 404 while each service caught it and returned a template, so the system looked healthy. Responses now carry `generatedBy: llm | fallback`, and a degraded run can't pass as a working one.
-- **Send-before-commit delivery.** Outreach reaches `SENT` only after the mail server accepts it, so a failed send never records a delivery that didn't happen.
+Lead intelligence pipeline: enrich, detect buying signals, qualify against an ICP, score, research, draft outreach, hold it at a human approval gate.
 
-**[ShopSmart](https://github.com/amathziah/devops)** · `Terraform` `AWS ECS Fargate` `Docker` `GitHub Actions`
+The engineering worth discussing:
 
-Full-stack inventory platform where the deployment pipeline is the point. Terraform provisions ALB, ECS, ECR, S3, IAM and CloudWatch; every push to `main` lints, tests, applies infrastructure, builds and pushes images to ECR, then force-redeploys the ECS service and waits for it to stabilise. Tested at three levels — Jest, Vitest and Playwright E2E.
+**I built the eval harness, and it failed my own code.** First run: 4 of 18 cases failed at **0.64 precision**. Substring matching accepted "Agriculture Software" for a Software ICP and "Executive Assistant to the CEO" as a decision maker. Token-aware matching took it to **1.00** across 20 cases, 5 adversarial. Tier 1 is a pure function — no DB, no network, no key — so it runs in CI on every push.
 
-**[Single-Qubit QNN](https://github.com/amathziah/QCresearch)** · `Qiskit` `Python`
+**Then it caught a worse one.** Tier 2 reported a flawless 100% grounding, 0% fluff. The numbers were real and the conclusion was wrong: every model call had been 404ing for weeks after Google retired the pinned model ID, each service was silently degrading to a template, and the suite was scoring those templates. [**Full postmortem**](https://github.com/amathziah/leadflow/blob/main/docs/POSTMORTEM-silent-model-outage.md) — the root cause is one line; the interesting part is the three layers that kept a total outage invisible.
 
-Qiskit reproduction of the single-qubit quantum neural network (data re-uploading classifier) from Pérez-Salinas et al.
+**A state machine that refuses to lie.** Outreach reaches `SENT` only after the mail server accepts it. Failed send, missing recipient, unconfigured SMTP — the message stays `APPROVED` and the error surfaces. The system never records a delivery that did not happen.
 
-**[AgriVision](https://github.com/amathziah/AgriVision-CropYield-SVR)** · `Python` `scikit-learn`
+`TypeScript` · `Node` · `PostgreSQL` · `Prisma` · `Gemini`
 
-Crop yield prediction using support vector regression.
+---
 
-### Stack
+### [ShopSmart](https://github.com/amathziah/devops) — push to production, nothing by hand
 
-![Tech stack: TypeScript, React, Node.js, PostgreSQL, Python, Docker, Terraform, AWS ECS, GitHub Actions](./assets/stack.svg)
+Inventory platform used as the payload for a reproducible delivery path. 25 Terraform resources; no console-clicked state anywhere. A push to `main` lints, tests, plans and applies infrastructure, builds both images, pushes to ECR, force-redeploys the ECS service and blocks until stable. Tested at three levels — Jest, Vitest, Playwright.
+
+IAM is scoped to `GetObject`/`PutObject` on **exactly one object**, not the bucket. Encryption and versioning on, public access blocked.
+
+The README documents the weaknesses as plainly as the strengths: persistence is a single JSON object read-modify-written with no compare-and-swap, so concurrent writers lose updates. Both fixes are written up — `If-Match` conditional writes, or DynamoDB.
+
+`Terraform` · `AWS ECS Fargate` · `Docker` · `GitHub Actions`
+
+---
+
+### [Single-Qubit QNN](https://github.com/amathziah/QCresearch)
+
+Qiskit reproduction of the data re-uploading classifier from Pérez-Salinas et al.
+
+---
+
+**[LinkedIn](https://www.linkedin.com/in/amathziah-j-832646214/)** · Delhi, India
