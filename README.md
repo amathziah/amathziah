@@ -51,4 +51,18 @@ Qiskit reproduction of the **data re-uploading classifier** from Pérez-Salinas 
 
 ---
 
-**[LinkedIn](https://www.linkedin.com/in/amathziah-j-832646214/)** · Delhi, India
+---
+
+### Contribution graph
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/amathziah/amathziah/output/snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/amathziah/amathziah/output/snake-light.svg">
+  <img alt="Contribution snake" src="https://raw.githubusercontent.com/amathziah/amathziah/output/snake-dark.svg">
+</picture>
+
+---
+
+<a href="https://www.linkedin.com/in/amathziah-j-832646214/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;<a href="mailto:jamathziah.23csai@nst.rishihood.edu.in"><img src="https://img.shields.io/badge/Email-0F0F18?style=for-the-badge&logo=gmail&logoColor=A78BFA" alt="Email"></a>
+
+Delhi, India
